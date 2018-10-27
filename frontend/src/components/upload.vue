@@ -36,10 +36,22 @@
                 */
                 formData.append('file', this.file);
 
+                fetch('http://localhost:9000/fileUpload', {
+                    method: 'POST',
+                    headers: {'Content-Type':'multipart/form-data'},
+                    body: {formData}
+                })
+                .then((response) => response.json())
+                        .then((data)=>{
+                            this.setState({images: data.images, isLoading: false});
+                            this.props.updateImages(data.images);
+                        })
+                        .catch(error => this.setState({ error, isLoading: false}));
+
                 /*
                   Make the request to the POST /single-file URL
                 */
-                axios.post( '/file_upload',
+                /*axios.post( 'http://localhost:9000/fileUpload',
                     formData,
                     {
                         headers: {
@@ -49,7 +61,7 @@
                 ).then(function(){
                 })
                     .catch(function(){
-                    });
+                    });*/
             },
 
             /*
