@@ -19,6 +19,10 @@
       <upload/>
     </v-content>
 
+    <v-content>
+      <uploadtwo/>
+    </v-content>
+
 
     <v-content>
       <Flashcard/>
@@ -35,11 +39,13 @@
 <script>
 import Flashcard from './components/Flashcard'
 import Upload from './components/upload'
+import uploadtwo from './components/uploadtwo'
 export default {
   name: 'App',
   components: {
       Flashcard,
       Upload,
+      uploadtwo,
   },
   data () {
     return {
