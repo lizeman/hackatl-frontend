@@ -10,7 +10,7 @@
     export default {
         data () {
             return {
-                url: 'http://localhost:8080/detector',
+                url: 'http://128.61.45.90:8080/detector',
                 // headers: {'access-token': '<your-token>'},
                 filesUploaded: []
             }

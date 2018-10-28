@@ -5,7 +5,7 @@
                 v-model="first_select"
                 :items="first_items"
                 :rules="[v => !!v || 'Item is required']"
-                label="from what language?"
+                label="translate from what language? Default: English"
                 required
         ></v-select>
 
@@ -13,7 +13,7 @@
                 v-model="second_select"
                 :items="second_items"
                 :rules="[v => !!v || 'Item is required']"
-                label="to what language?"
+                label="translate to what language? Default: Italian"
                 required
         ></v-select>
 
@@ -35,17 +35,29 @@
             valid: true,
             first_select: null,
             first_items: [
-                'Item 1',
-                'Item 2',
-                'Item 3',
-                'Item 4'
+                'en',
+                'es',
+                'it',
+                'az',
+                'fr',
+                'de',
+                'el',
+                'ro',
+                'lv',
+                'nl'
             ],
             second_select: null,
             second_items: [
-                'Item 1',
-                'Item 2',
-                'Item 3',
-                'Item 4'
+                'en',
+                'es',
+                'it',
+                'az',
+                'fr',
+                'de',
+                'el',
+                'ro',
+                'lv',
+                'nl'
             ],
         }),
 
@@ -53,9 +65,11 @@
             submit () {
                 if (this.$refs.form.validate()) {
                     // Native form submission is not yet supported
-                    axios.post('/api/submit', {
-                        from: this.first_select,
-                        to: this.second_select
+                    axios.get('http://128.61.45.90:8080/setFromTo', {
+                        params: {
+                            from: this.first_select,
+                            to:  this.second_select
+                        }
                     })
                 }
             },

@@ -6,10 +6,10 @@
     <!--</vue-flashcard>-->
     <vue-flashcard v-for="(trans, i) in translate"
                    :key="i"
-                   :front="trans.fontword"
-                   :back="trans.backword"
-                   :imgFront="trans.url"
-                   :imgBack="trans.url"
+                   :front="trans.name"
+                   :back="trans.translation"
+                   :img-back="trans.link"
+                   :img-front="trans.link"
     >
     </vue-flashcard>
   </div>
@@ -17,27 +17,27 @@
 
 <script>
 import vueFlashcard from 'vue-flashcard'
-// import axios from 'axios'
+import axios from 'axios'
+// var something = {
+//     translate: [
+//         {
+//             name: '1', translation: '2', link: 'https://vuejs.org/images/logo.png'
+//         },
+//         ]
+// }
 var something = {
     translate: [
-        {
-            fontword: '1', backword: '2', url: 'http://localhost:8080/_Avatar.jpeg'
-        },
-        {
-            fontword: '3', backword: '4', url: 'https://vuejs.org/images/logo.png'
-        },
-        {
-            fontword: '5', backword: '5', url: 'https://vuejs.org/images/logo.png'
-        },
-        {
-            fontword: '6', backword: '7', url: 'https://vuejs.org/images/logo.png'
-        }]
-
-
+        ]
 }
 
-fetch("https://localhost:9000/getall")
-    .then(res => res.json());
+
+axios.get("http://128.61.45.90:8080/Cards/all")
+    .then(response => {
+        console.log(response.data)
+        for (var i = 0; i < response.data.length; i++)
+            something.translate.push(response.data[i])
+    })
+
 
 export default {
     data: () => (something),
@@ -46,13 +46,7 @@ export default {
     vueFlashcard
   },
   methods: {
-    getListfromBackend () {
-      fetch("http://localhost:9000/trans?word=apple&to=ru")
-          .then(res => res.json())
-          .then((result) => {
-            console.log(result);
-          });
-    }
+
   }
 }
 </script>
