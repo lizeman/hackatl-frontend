@@ -7,7 +7,10 @@
     <vue-flashcard v-for="(trans, i) in translate"
                    :key="i"
                    :front="trans.fontword"
-                   :back="trans.backword">
+                   :back="trans.backword"
+                   :imgFront="trans.url"
+                   :imgBack="trans.url"
+    >
     </vue-flashcard>
   </div>
 </template>
@@ -18,20 +21,24 @@ import vueFlashcard from 'vue-flashcard'
 var something = {
     translate: [
         {
-            fontword: '1', backword: '2'
+            fontword: '1', backword: '2', url: 'http://localhost:8080/_Avatar.jpeg'
         },
         {
-            fontword: '3', backword: '4'
+            fontword: '3', backword: '4', url: 'https://vuejs.org/images/logo.png'
         },
         {
-            fontword: '5', backword: '5'
+            fontword: '5', backword: '5', url: 'https://vuejs.org/images/logo.png'
         },
         {
-            fontword: '6', backword: '7'
+            fontword: '6', backword: '7', url: 'https://vuejs.org/images/logo.png'
         }]
 
 
 }
+
+fetch("https://localhost:9000/getall")
+    .then(res => res.json());
+
 export default {
     data: () => (something),
 

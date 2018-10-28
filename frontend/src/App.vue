@@ -15,14 +15,17 @@
       <!--</v-btn>-->
     </v-toolbar>
 
-    <v-content>
-      <upload/>
-    </v-content>
+    <!--<v-content>-->
+      <!--<upload/>-->
+    <!--</v-content>-->
 
     <v-content>
       <uploadtwo/>
     </v-content>
 
+    <v-content>
+      <language/>
+    </v-content>
 
     <v-content>
       <Flashcard/>
@@ -38,13 +41,13 @@
 
 <script>
 import Flashcard from './components/Flashcard'
-import Upload from './components/upload'
 import uploadtwo from './components/uploadtwo'
+import language from'./components/language'
 export default {
   name: 'App',
   components: {
       Flashcard,
-      Upload,
+      language,
       uploadtwo,
   },
   data () {
